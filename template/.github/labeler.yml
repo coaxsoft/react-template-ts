@@ -1,0 +1,3 @@
+# https://github.com/actions/labeler
+changelog_unchanged:
+  - all: ["!CHANGELOG.md"]

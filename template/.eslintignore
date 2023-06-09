@@ -1,0 +1,8 @@
+serviceWorker.ts
+react-app-env.d.ts
+config/
+scripts/
+build/
+jest.config.js
+coverage/
+.babelrc

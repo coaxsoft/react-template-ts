@@ -1,0 +1,46 @@
+name: Analyze Pull Request
+
+on:
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: [self-hosted, locl]
+    timeout-minutes: 30
+    steps:
+      - name: 'Checkout repository on branch: ${{ github.REF }}'
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.REF }}
+          fetch-depth: 0
+      - name: Extract branch name
+        shell: bash
+        run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+        id: extract_branch
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - name: Install packages
+        run: npm ci
+      - name: Run List 
+        run: npm run lint:ci
+      - name: Run Tests
+        run: npm run test:ci
+      - name: Setup SonarQubeRunner
+        uses: warchant/setup-sonar-scanner@v4
+      - name: Analyze with SonarQube
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: sonar-scanner
+          -Dsonar.host.url=${{ secrets.SONAR_URL }}
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.projectKey=${{ github.event.repository.name }}
+          -Dsonar.scm.provider=git
+          -Dsonar.branch.name=${BRANCH_NAME}
+          -Dsonar.sources=src/
+          -Dsonar.eslint.reportPaths=eslint-report.json
+          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+          -Dsonar.exclusions=public/**,config/**,scripts/**,src/__tests__/**,src/__stories__/**,src/__mocks__/**,src/components/icons/**,.storybook/**,Dockerfile,jest.config.js,jest.setup.js,server.js

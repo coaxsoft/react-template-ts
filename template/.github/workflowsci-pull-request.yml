@@ -1,0 +1,40 @@
+name: Analyze Pull Request
+
+on:
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout repository on branch: ${{ github.REF }}'
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Extract branch name
+        shell: bash
+        run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+        id: extract_branch
+      - name: Setup SonarQubeRunner
+        uses: warchant/setup-sonar-scanner@v4
+      - name: Analyze with SonarQube
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: sonar-scanner
+          -Dsonar.host.url=${{ secrets.SONAR_URL }}
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.projectKey=${{ github.event.repository.name }}
+          -Dsonar.scm.provider=git
+          -Dsonar.branch.name=${BRANCH_NAME}
+          -Dsonar.sources=src/
+          -Dsonar.eslint.reportPaths=eslint-report.json
+          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+          -Dsonar.exclusions=public/**,config/**,scripts/**,src/__tests__/**,src/__stories__/**,src/__mocks__/**,src/components/icons/**,.storybook/**,Dockerfile,jest.config.js,jest.setup.js,server.js
+
+
+
+
+
+
