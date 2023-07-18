@@ -32,9 +32,3 @@ jobs:
           -Dsonar.eslint.reportPaths=eslint-report.json
           -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
           -Dsonar.exclusions=public/**,config/**,scripts/**,src/__tests__/**,src/__stories__/**,src/__mocks__/**,src/components/icons/**,.storybook/**,Dockerfile,jest.config.js,jest.setup.js,server.js
-
-
-
-
-
-
