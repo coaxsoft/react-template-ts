@@ -1,7 +1,7 @@
-# React Template: coax-react-js
+# React Template: coax-react-ts
 
 ## Description
-This is a custom React template, coax-react-js, which comes pre-configured with the essential settings for a quick start of a new React project.
+This is a custom React template, coax-react-ts, which comes pre-configured with the essential settings for a quick start of a new React project.
 
 
 # Quick Start
