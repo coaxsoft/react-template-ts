@@ -9,7 +9,7 @@ This is a custom React template, coax-react-js, which comes pre-configured with 
 To use this template, you need to run the following command:
 
 ```console
-npx create-react-app "APP_NAME" --template coax-react-js
+npx create-react-app "APP_NAME" --template coax-react-ts
 ```
 Please replace "APP_NAME" with the name of your new project.
 
