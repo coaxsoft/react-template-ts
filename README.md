@@ -6,12 +6,16 @@ This is a custom React template, coax-react-ts, which comes pre-configured with 
 
 # Quick Start
 
-To use this template, you need to run the following command:
+- To use this template, you need to run the following command:
+  ```console
+  npx create-react-app "APP_NAME" --template coax-react-ts
+  ```
+- Please replace "APP_NAME" with the name of your new project.
+- After the installation is complete, navigate to project folder and run the following command:
+  ```console
+  rm -rf node_modules && npm install
+  ```
 
-```console
-npx create-react-app "APP_NAME" --template coax-react-ts
-```
-Please replace "APP_NAME" with the name of your new project.
 
 # Initial Setup
 After installation, you need to update a few configuration files:
