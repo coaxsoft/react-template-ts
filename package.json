@@ -6,18 +6,18 @@
     "create-react-app",
     "template"
   ],
-  "description": "The base template for Create React App.",
+  "description": "This is a custom React template, coax-react-ts, which comes pre-configured with the essential settings for a quick start of a new React project.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/facebook/create-react-app.git",
-    "directory": "packages/cra-template"
+    "url": "https://github.com/coaxsoft/react-template-ts.git",
+    "directory": "react-template-ts"
   },
   "license": "MIT",
   "engines": {
     "node": ">=16"
   },
   "bugs": {
-    "url": "https://github.com/facebook/create-react-app/issues"
+    "url": "https://github.com/coaxsoft/react-template-ts/issues"
   },
   "files": [
     "template",
