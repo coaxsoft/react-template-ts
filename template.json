@@ -1,55 +1,57 @@
 {
-  "dependencies": {
-    "@loadable/babel-plugin": "^5.15.3",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.33",
-    "@types/react": "^18.2.7",
-    "@types/react-dom": "^18.2.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.11.2",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build:test": "serve -s build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint --quiet ./",
-    "lint:fix": "eslint --fix . --ext .ts --ext .tsx",
-    "lint:ci": "eslint -f json -o eslint-report.json ./",
-    "prettier:format": "prettier --write .",
-    "prettier:check": "prettier --check .",
-    "test:watch": "jest --watch",
-    "test:ci": "jest --coverage --silent=true"
-  },
-  "devDependencies": {
-    "@coax/eslint-config-fe-react": "^1.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.59.7",
-    "@typescript-eslint/parser": "^5.59.7",
-    "babel-jest": "^29.5.0",
-    "eslint": "^8.41.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-react": "^7.32.2",
-    "jest": "^29.5.0",
-    "jest-canvas-mock": "^2.5.1",
-    "jest-environment-jsdom": "^29.5.0",
-    "jest-environment-jsdom-fourteen": "^1.0.1",
-    "prettier": "^2.8.8",
-    "resize-observer-polyfill": "^1.5.1",
-    "sass": "^1.62.1",
-    "sass-loader": "^13.3.0",
-    "serve": "^14.2.0",
-    "style-loader": "^3.3.3"
-  },
-  "pre-commit": [
-    "prettier:format",
-    "lint"
-  ]
+  "package": {
+    "dependencies": {
+      "@loadable/babel-plugin": "^5.15.3",
+      "@testing-library/jest-dom": "^5.16.5",
+      "@testing-library/react": "^13.4.0",
+      "@testing-library/user-event": "^13.5.0",
+      "@types/jest": "^27.5.2",
+      "@types/node": "^16.18.33",
+      "@types/react": "^18.2.7",
+      "@types/react-dom": "^18.2.4",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-router-dom": "^6.11.2",
+      "react-scripts": "5.0.1",
+      "typescript": "^4.9.5",
+      "web-vitals": "^2.1.4"
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "build:test": "serve -s build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject",
+      "lint": "eslint --quiet ./",
+      "lint:fix": "eslint --fix . --ext .ts --ext .tsx",
+      "lint:ci": "eslint -f json -o eslint-report.json ./",
+      "prettier:format": "prettier --write .",
+      "prettier:check": "prettier --check .",
+      "test:watch": "jest --watch",
+      "test:ci": "jest --coverage --silent=true"
+    },
+    "devDependencies": {
+      "@coax/eslint-config-fe-react": "^1.0.0",
+      "@typescript-eslint/eslint-plugin": "^5.59.7",
+      "@typescript-eslint/parser": "^5.59.7",
+      "babel-jest": "^29.5.0",
+      "eslint": "^8.41.0",
+      "eslint-config-prettier": "^8.8.0",
+      "eslint-plugin-react": "^7.32.2",
+      "jest": "^29.5.0",
+      "jest-canvas-mock": "^2.5.1",
+      "jest-environment-jsdom": "^29.5.0",
+      "jest-environment-jsdom-fourteen": "^1.0.1",
+      "prettier": "^2.8.8",
+      "resize-observer-polyfill": "^1.5.1",
+      "sass": "^1.62.1",
+      "sass-loader": "^13.3.0",
+      "serve": "^14.2.0",
+      "style-loader": "^3.3.3"
+    },
+    "pre-commit": [
+      "prettier:format",
+      "lint"
+    ]
+  }  
 }
