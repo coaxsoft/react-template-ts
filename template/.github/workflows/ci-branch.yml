@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted, locl]
+    runs-on: [self-hosted, coax]
     timeout-minutes: 30
     steps:
       - name: 'Checkout repository on branch: ${{ github.REF }}'

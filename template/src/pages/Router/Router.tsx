@@ -1,20 +1,61 @@
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import React, { lazy, Suspense } from "react";
+import Cookies from "js-cookie";
+import { createBrowserRouter, RouterProvider, redirect, Outlet } from "react-router-dom";
+
+// layouts
+const AuthLayout = lazy(() => import("../../layouts/AuthLayout"));
 
 // pages
-import Home from "../Home";
-import LogIn from "../LogIn";
+const Home = lazy(() => import("../Home"));
+const LogIn = lazy(() => import("../LogIn"));
 
+const renderWithSuspense = (Component: React.LazyExoticComponent<() => JSX.Element>) => (
+  <Suspense fallback="...">
+    <Component />
+  </Suspense>
+);
 
-function Router() {
+const PRIVATE_ROUTES = [
+  {
+    element: <Outlet />,
+    loader: async () => {
+      const accessToken = Cookies.get("accessToken");
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/auth/login" element={<LogIn/>}/>
-      </Routes>
-    </BrowserRouter>
-  );
-}
+      if (!accessToken) {
+        return redirect("/auth/login");
+      }
+
+      return null;
+    },
+    children: [
+      {
+        path: "/private",
+        element: renderWithSuspense(Home)
+      }
+    ]
+  }
+];
+
+const AUTH_ROUTES = [
+  {
+    path: "/auth/login",
+    element: renderWithSuspense(LogIn)
+  }
+];
+
+const ROOT_ROUTER = [
+  {
+    path: "/",
+    element: renderWithSuspense(Home)
+  },
+  {
+    path: "/auth",
+    element: renderWithSuspense(AuthLayout),
+    children: AUTH_ROUTES,
+  },
+  ...PRIVATE_ROUTES,
+];
+
+const Router = () => <RouterProvider router={createBrowserRouter(ROOT_ROUTER)} />;
 
 export default Router;

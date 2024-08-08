@@ -17,21 +17,23 @@
       "web-vitals": "^2.1.4"
     },
     "scripts": {
-      "start": "react-scripts start",
-      "build": "react-scripts build",
+      "start": "craco start",
+      "build": "craco build",
       "build:test": "serve -s build",
-      "test": "react-scripts test",
-      "eject": "react-scripts eject",
+      "test": "craco test",
+      "eject": "craco eject",
       "lint": "eslint --quiet ./",
       "lint:fix": "eslint --fix . --ext .ts --ext .tsx",
       "lint:ci": "eslint -f json -o eslint-report.json ./",
       "prettier:format": "prettier --write .",
       "prettier:check": "prettier --check .",
       "test:watch": "jest --watch",
-      "test:ci": "jest --coverage --silent=true"
+      "test:ci": "jest --coverage --silent=true",
+      "ts:check": "tsc --noEmit"
     },
     "devDependencies": {
       "@coax/eslint-config-fe-react": "^1.0.0",
+      "@craco/craco": "^7.1.0",
       "@typescript-eslint/eslint-plugin": "^5.59.7",
       "@typescript-eslint/parser": "^5.59.7",
       "babel-jest": "^29.5.0",
@@ -42,6 +44,7 @@
       "jest-canvas-mock": "^2.5.1",
       "jest-environment-jsdom": "^29.5.0",
       "jest-environment-jsdom-fourteen": "^1.0.1",
+      "pre-commit": "^1.2.2",
       "prettier": "^2.8.8",
       "resize-observer-polyfill": "^1.5.1",
       "sass": "^1.62.1",
@@ -50,6 +53,7 @@
       "style-loader": "^3.3.3"
     },
     "pre-commit": [
+      "ts:check",
       "prettier:format",
       "lint"
     ]
